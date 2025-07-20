@@ -3,7 +3,7 @@ const User = require('../models/user.js'
 )
 const bcrypt = require('bcryptjs')
 
-export const CreateUser = async(req,res)=>{
+ const CreateUser = async(req,res)=>{
  
     try {
         const {name,email,password} = req.body
@@ -44,7 +44,7 @@ export const CreateUser = async(req,res)=>{
 
 }
 
-export const GetUsers = async(req,res)=>{
+ const GetUsers = async(req,res)=>{
     
     try {
         const users = await User.find().select('-password')
@@ -60,7 +60,7 @@ export const GetUsers = async(req,res)=>{
     }
 }
 
-export const UpdateUser =async(req,res)=>{
+ const UpdateUser =async(req,res)=>{
     try {
         const updates = req.body
          if(Object.keys(updates).length == 0){
@@ -93,7 +93,7 @@ export const UpdateUser =async(req,res)=>{
     }
 }
 
-export const DeleteUser = async(req,res)=>{
+ const DeleteUser = async(req,res)=>{
 
     try {
         const userId = req.params.id 
@@ -122,3 +122,11 @@ export const DeleteUser = async(req,res)=>{
 
 
 }
+
+
+module.exports = {
+  CreateUser,
+  GetUsers,
+  DeleteUser,
+  UpdateUser
+};
